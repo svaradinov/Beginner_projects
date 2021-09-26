@@ -38,6 +38,12 @@ def battle(user_choice, comp_choice):
             computer_wins += 1
             return f'Your choice: {MAPPER[user_choice]}\nComputer choice: {MAPPER[comp_choice]}\n\nScissors beats paper! Computer wins!'
 
+def input_validation(choice):
+    if choice not in choices:
+        print(f'Try again')
+        return False
+    return True
+
 
 choices = ['R', 'S', 'P']
 
@@ -46,6 +52,7 @@ while True:
     if user_choice == "END":
         print(f'End of the game\nYou win: {user_wins} battle\nComputer wins: {computer_wins} battle')
         break
-    computer_choice = random.choice(choices)
-    print(battle(user_choice, computer_choice))
+    if input_validation( user_choice ):
+        computer_choice = random.choice(choices)
+        print(battle(user_choice, computer_choice))
 
